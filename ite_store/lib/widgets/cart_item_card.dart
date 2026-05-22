@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/cart_item.dart';
+import '../providers/cart_provider.dart';
+import '../utils/currency_formatter.dart';
+
+class CartItemCard extends StatelessWidget {
+  final CartItem cartItem;
+
+  const CartItemCard({Key? key, required this.cartItem}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: ListTile(
+        title: Text(cartItem.product.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+        subtitle: Text(CurrencyFormatter.format(cartItem.product.price)),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Decrease button
+            IconButton(
+              icon: const Icon(Icons.remove_circle_outline),
+              onPressed: () => cartProvider.decreaseQuantity(cartItem),
+            ),
+            // Quantity text
+            Text('${cartItem.quantity}', style: const TextStyle(fontSize: 16)),
+            // Increase button
+            IconButton(
+              icon: const Icon(Icons.add_circle_outline),
+              onPressed: () => cartProvider.increaseQuantity(cartItem),
+            ),
+            // Delete completely button
+            IconButton(
+              icon: const Icon(Icons.delete, color: Colors.red),
+              onPressed: () => cartProvider.removeItem(cartItem),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
