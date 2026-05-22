@@ -4,9 +4,9 @@ class AppConfig {
   final Environment environment;
   final String appName;
   final String baseUrl;
-  final bool enableCart; // This controls the Demo mode restriction
-
-  // This is a Singleton. It means we can access our config from anywhere in the app.
+  final bool enableCart; 
+  final String logoPath;
+ 
   static late AppConfig instance;
 
   AppConfig({
@@ -14,7 +14,8 @@ class AppConfig {
     required this.appName,
     required this.baseUrl,
     required this.enableCart,
+    required this.logoPath,
   }) {
-    instance = this; // Save the setup here
+    instance = this; 
   }
 }

@@ -8,6 +8,7 @@ void main() {
     appName: 'ITE Store Test',
     baseUrl: 'https://smlp-pub.s3.ap-southeast-1.amazonaws.com/ite-store/uat/',
     enableCart: true,
+    logoPath: 'assets/images/uat_logo.png',
   );
   runApp(const MyApp());
 }

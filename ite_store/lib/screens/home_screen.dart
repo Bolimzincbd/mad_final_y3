@@ -102,7 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          // Search Bar
+
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+            child: Image.asset(
+              AppConfig.instance.logoPath, // This grabs the correct image automatically!
+              height: 100, // You can change this number to make the image bigger or smaller
+            ),
+          ),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
