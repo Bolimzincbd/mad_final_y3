@@ -20,20 +20,42 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // This is your base ID. We will add suffixes to this below!
         applicationId = "com.example.ite_store"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    // --- NEW FLAVORS SECTION ---
+    flavorDimensions += "environment"
+
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders["appName"] = "ITE Store Dev"
+        }
+        create("uat") {
+            dimension = "environment"
+            applicationIdSuffix = ".uat"
+            manifestPlaceholders["appName"] = "ITE Store Test"
+        }
+        create("demo") {
+            dimension = "environment"
+            applicationIdSuffix = ".demo"
+            manifestPlaceholders["appName"] = "ITE Store Demo"
+        }
+        create("prod") {
+            dimension = "environment"
+            manifestPlaceholders["appName"] = "ITE Store"
+        }
+    }
+    // --- END OF NEW SECTION ---
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
