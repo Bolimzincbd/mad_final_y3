@@ -45,7 +45,7 @@ class CartScreen extends StatelessWidget {
 
           return Column(
             children: [
-              // List of items in the cart
+
               Expanded(
                 child: ListView.builder(
                   itemCount: cart.items.length,
@@ -55,7 +55,7 @@ class CartScreen extends StatelessWidget {
                 ),
               ),
               
-              // Bottom Checkout Section
+
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class CartScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Total Price
+
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -78,7 +78,7 @@ class CartScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // Checkout Button
+
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),

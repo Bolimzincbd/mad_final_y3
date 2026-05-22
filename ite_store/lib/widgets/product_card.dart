@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check if cart is enabled (False in Demo mode)
+
     bool isCartEnabled = AppConfig.instance.enableCart;
 
     return Card(
@@ -22,7 +22,7 @@ class ProductCard extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            // Product Image (shows an icon if url is empty or broken)
+
             Expanded(
               child: product.imageUrl.isNotEmpty
                   ? Image.network(product.imageUrl, fit: BoxFit.cover,
@@ -30,13 +30,13 @@ class ProductCard extends StatelessWidget {
                   : const Icon(Icons.image, size: 50),
             ),
             const SizedBox(height: 8),
-            // Product Name
+
             Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             const SizedBox(height: 4),
-            // Product Price
+
             Text(CurrencyFormatter.format(product.price), style: const TextStyle(color: Colors.green, fontSize: 14)),
             const SizedBox(height: 8),
-            // Add to Cart Button (Only show if enabled!)
+
             if (isCartEnabled)
               ElevatedButton(
                 onPressed: () {

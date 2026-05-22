@@ -106,8 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
             child: Image.asset(
-              AppConfig.instance.logoPath, // This grabs the correct image automatically!
-              height: 100, // You can change this number to make the image bigger or smaller
+              AppConfig.instance.logoPath,
+              height: 100, 
             ),
           ),
 
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              onChanged: _searchProducts, // Call search when typing
+              onChanged: _searchProducts, 
             ),
           ),
           
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.all(8),
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2, // 2 items per row
-                              childAspectRatio: 0.75, // Makes the card taller
+                              childAspectRatio: 0.75, 
                             ),
                             itemCount: _displayedProducts.length,
                             itemBuilder: (context, index) {

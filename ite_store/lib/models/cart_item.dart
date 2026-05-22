@@ -6,6 +6,6 @@ class CartItem {
 
   CartItem({
     required this.product,
-    this.quantity = 1, // Default quantity is 1 when added
+    this.quantity = 1, 
   });
 }

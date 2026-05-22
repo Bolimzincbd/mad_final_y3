@@ -5,13 +5,13 @@ import '../models/product.dart';
 class CartProvider with ChangeNotifier {
   final List<CartItem> _items = [];
 
-  // Read-only list of items
+
   List<CartItem> get items => _items;
 
-  // Get total count of unique items
+
   int get itemCount => _items.length;
 
-  // Calculate total money price
+
   double get totalPrice {
     double total = 0.0;
     for (var item in _items) {
@@ -20,19 +20,19 @@ class CartProvider with ChangeNotifier {
     return total;
   }
 
-  // Add product to cart
+
   void addToCart(Product product) {
-    // Check if the product is already in the cart
+
     int index = _items.indexWhere((item) => item.product.id == product.id);
     
     if (index >= 0) {
-      // If it exists, just increase the quantity
+
       _items[index].quantity++;
     } else {
-      // If it's new, add it to the list
+
       _items.add(CartItem(product: product));
     }
-    notifyListeners(); // Tell the UI to update!
+    notifyListeners(); 
   }
 
   void increaseQuantity(CartItem cartItem) {
@@ -44,7 +44,7 @@ class CartProvider with ChangeNotifier {
     if (cartItem.quantity > 1) {
       cartItem.quantity--;
     } else {
-      // If quantity is 1 and user decreases, remove it from cart
+
       _items.remove(cartItem);
     }
     notifyListeners();

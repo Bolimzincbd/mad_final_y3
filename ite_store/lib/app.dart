@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // MultiProvider allows us to add state management to the whole app
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
           appBarTheme: const AppBarTheme(
-            elevation: 0, // Makes the top bar look clean and flat
+            elevation: 0,
           ),
         ),
         home: const HomeScreen(),

@@ -3,7 +3,7 @@ import 'config/environment.dart';
 import 'app.dart';
 
 void main() {
-  // Set up the DEV environment
+
   AppConfig(
     environment: Environment.dev,
     appName: 'ITE Store Dev',
