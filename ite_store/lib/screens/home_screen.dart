@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _loadProducts(); // Load data when screen starts
+    _loadProducts(); 
   }
 
   Future<void> _loadProducts() async {
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final products = await _productService.fetchProducts();
       setState(() {
         _allProducts = products;
-        _displayedProducts = products; // Show all products at first
+        _displayedProducts = products; 
         _isLoading = false;
       });
     } catch (e) {
@@ -43,13 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  // Search logic
   void _searchProducts(String query) {
     setState(() {
       if (query.isEmpty) {
         _displayedProducts = _allProducts;
       } else {
-        // Filter the list based on the user's typed word
         _displayedProducts = _allProducts
             .where((p) => p.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
@@ -62,10 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
     bool isCartEnabled = AppConfig.instance.enableCart;
 
     return Scaffold(
+      // FIXED: Prevents bottom overflow when the keyboard pops up for the search bar
+      resizeToAvoidBottomInset: false, 
       appBar: AppBar(
         title: Text(AppConfig.instance.appName),
         actions: [
-          // Only show cart icon if not in Demo mode
           if (isCartEnabled)
             Consumer<CartProvider>(
               builder: (context, cart, child) {
@@ -75,14 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: const Icon(Icons.shopping_cart),
                       onPressed: () {
-                        // Go to Cart Screen
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const CartScreen()),
                         );
                       },
                     ),
-                    // Red dot with number for items in cart
                     if (cart.itemCount > 0)
                       Positioned(
                         right: 8,
@@ -102,15 +99,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-
           Padding(
             padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
             child: Image.asset(
               AppConfig.instance.logoPath,
               height: 100, 
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => const Icon(Icons.store, size: 80, color: Colors.grey),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
@@ -122,20 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
               onChanged: _searchProducts, 
             ),
           ),
-          
-          // Main Content
           Expanded(
             child: _isLoading
-                ? const Center(child: CircularProgressIndicator()) // Loading spinner
+                ? const Center(child: CircularProgressIndicator()) 
                 : _errorMessage.isNotEmpty
-                    ? Center(child: Text('Error: $_errorMessage', style: const TextStyle(color: Colors.red))) // Error message
+                    ? Center(child: Text('Error: $_errorMessage', style: const TextStyle(color: Colors.red))) 
                     : _displayedProducts.isEmpty
                         ? const Center(child: Text('No products found.'))
                         : GridView.builder(
                             padding: const EdgeInsets.all(8),
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2, // 2 items per row
-                              childAspectRatio: 0.75, 
+                              crossAxisCount: 2, 
+                              childAspectRatio: 0.75, // Aspect ratio determines item height based on screen width
                             ),
                             itemCount: _displayedProducts.length,
                             itemBuilder: (context, index) {
