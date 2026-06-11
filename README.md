@@ -73,7 +73,7 @@ ite_store/
 1. **Clone the project:**
 `git clone https://github.com/your-username/mad_final_y3.git`
 2. **Install dependencies:**
-Open your terminal in the `ite_store` folder and run:
+Open your terminal in the `ite_store` folder by run `cd ite_store` and run:
 `flutter pub get`
 3. **Setup Android NDK:** (If you see build errors, ensure your Android SDK and NDK are correctly installed in Android Studio).
 
