@@ -83,7 +83,7 @@ Open your terminal in the `ite_store` folder by run `cd ite_store` and run:
 
 To run the app, ensure you have an emulator (like MuMu Player) or a real phone connected.
 
-### How to Run Each Flavor
+### How to Run Each Flavor on app/emulator
 
 Use the following commands in your terminal to launch the version you want:
 
@@ -91,6 +91,16 @@ Use the following commands in your terminal to launch the version you want:
 * **Run UAT:** `flutter run --flavor uat -t lib/main_uat.dart`
 * **Run Demo:** `flutter run --flavor demo -t lib/main_demo.dart`
 * **Run Prod:** `flutter run --flavor prod -t lib/main_prod.dart`
+
+### How to Run Each Flavor on browser or chrome
+
+Use the following commands in your terminal to launch the version you want:
+
+* **Dev:** `flutter run -d chrome --flavor dev -t lib/main_dev.dart --web-browser-flag "--disable-web-security"`
+* **uat:** `flutter run -d chrome --flavor uat -t lib/uat_dev.dart --web-browser-flag "--disable-web-security"`
+* **demo:** `flutter run -d chrome --flavor demo -t lib/demo_dev.dart --web-browser-flag "--disable-web-security"`
+* **prod:** `flutter run -d chrome --flavor prod -t lib/prod_dev.dart --web-browser-flag "--disable-web-security"`
+
 
 ---
 
